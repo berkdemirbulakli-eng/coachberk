@@ -1,7 +1,7 @@
 """Build the CoachBerk site from src/pages.
 
 Outputs two versions of the same pages:
-  * the static site at the repo root (index.html, *.html, resources/...)
+  * the static site at the repo root (index.html and the other *.html pages)
   * GoHighLevel paste-in files in ghl/ (body code + header tracking code per page)
 
 Run from the repo root:  python3 tools/build.py
@@ -36,7 +36,7 @@ STATIC_PATHS = {
     "ADS": "/google-ads-for-insurance-agencies.html",
     "SEO": "/insurance-agency-seo.html",
     "REACT": "/policyholder-reactivation-campaigns.html",
-    "GUIDE": "/resources/insurance-agency-seo-guide.html",
+    "GUIDE": "/insurance-agency-seo-guide.html",
     "BOOK": "/free-audit.html",
     "CHECKLIST": SITE + GHL_PATHS["CHECKLIST"],
     "PRIVACY": SITE + GHL_PATHS["PRIVACY"],
