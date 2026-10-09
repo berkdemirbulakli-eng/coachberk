@@ -18,7 +18,7 @@ Every page has a unique title and meta description, a canonical URL, Open Graph 
 
 ## Before launch
 1. **Contact form:** in `free-audit.html`, replace `YOUR_FORM_ID` with a [Formspree](https://formspree.io) form ID (or point the form at your own endpoint).
-2. **Email:** replace `hello@coachberk.com` throughout if you use a different address.
+2. **Email:** the site uses `berk@coachberk.com` (footer, audit page and schema markup).
 3. **Proof:** add real client results, testimonials and a headshot/About section when you have them.
 4. **Search Console:** verify the domain in Google Search Console and submit `https://coachberk.com/sitemap.xml`.
 5. **Analytics:** add your GA4 / call-tracking snippet in the `<head>` of each page.
