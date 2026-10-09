@@ -1,0 +1,352 @@
+<!-- CoachBerk: Reactivation Campaigns page. Paste this whole block into one Custom JS/HTML (Code) element. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<style>
+.cb{
+  --ink: #0d1b2a;
+  --ink-soft: #3b4a5c;
+  --muted: #6b7a8c;
+  --bg: #ffffff;
+  --bg-alt: #f4f7fb;
+  --line: #e2e8f0;
+  --brand: #0b5fff;
+  --brand-dark: #0846bd;
+  --accent: #14b8a6;
+  --warm: #ff7a45;
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(13, 27, 42, 0.08);
+  --max: 1160px;
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --display: "Plus Jakarta Sans", var(--font);
+}
+.cb *{ box-sizing: border-box; }
+.cb{ scroll-behavior: smooth; }
+.cb{
+  margin: 0;
+  font-family: var(--font);
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.65;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+  text-align: left;
+}
+.cb img{ max-width: 100%; display: block; }
+.cb a{ color: var(--brand); text-decoration: none; }
+.cb a:hover{ text-decoration: underline; }
+.cb h1,.cb h2,.cb h3,.cb h4{ font-family: var(--display); line-height: 1.2; margin: 0 0 .6em; letter-spacing: -0.02em; color: var(--ink); }
+.cb .section.dark h2,.cb .section.dark h3{ color: #fff; }
+.cb h1{ font-size: clamp(2.1rem, 5vw, 3.5rem); }
+.cb h2{ font-size: clamp(1.7rem, 3.4vw, 2.5rem); }
+.cb h3{ font-size: 1.25rem; }
+.cb p{ margin: 0 0 1em; color: var(--ink-soft); }
+.cb ul{ color: var(--ink-soft); }
+.cb .container{ max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+.cb .section{ padding: 88px 0; }
+.cb .section.alt{ background: var(--bg-alt); }
+.cb .section.dark{ background: var(--ink); color: #fff; }
+.cb .section.dark p,.cb .section.dark li{ color: #c6d1de; }
+.cb .eyebrow{
+  display: inline-block; font-size: .78rem; font-weight: 700; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--brand); margin-bottom: 14px;
+}
+.cb .section.dark .eyebrow{ color: var(--accent); }
+.cb .lead{ font-size: 1.15rem; max-width: 720px; }
+.cb .center{ text-align: center; }
+.cb .center .lead{ margin-left: auto; margin-right: auto; }
+.cb .skip{ position: absolute; left: -999px; top: 0; background: var(--brand); color: #fff; padding: 10px 16px; z-index: 100; }
+.cb .skip:focus{ left: 10px; }
+.cb .site-header{
+  position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.92);
+  backdrop-filter: blur(10px); border-bottom: 1px solid var(--line);
+}
+.cb .nav{ display: flex; align-items: center; justify-content: space-between; height: 72px; }
+.cb .logo{ font-family: var(--display); font-weight: 800; font-size: 1.35rem; color: var(--ink); letter-spacing: -0.03em; }
+.cb .logo span{ color: var(--brand); }
+.cb .logo:hover{ text-decoration: none; }
+.cb .nav-links{ display: flex; gap: 28px; align-items: center; list-style: none; margin: 0; padding: 0; }
+.cb .nav-links a{ color: var(--ink); font-weight: 500; font-size: .95rem; }
+.cb .nav-links a[aria-current="page"]{ color: var(--brand); }
+.cb .nav-links a.btn-primary{ color: #fff; }
+.cb .nav-toggle{ display: none; background: none; border: 0; font-size: 1.6rem; cursor: pointer; color: var(--ink); }
+.cb .btn{
+  display: inline-flex; align-items: center; gap: 8px; padding: 14px 24px; border-radius: 10px;
+  font-weight: 600; font-size: 1rem; border: 2px solid transparent; cursor: pointer; transition: .2s;
+}
+.cb .btn:hover{ text-decoration: none; transform: translateY(-1px); }
+.cb .btn-primary{ background: var(--brand); color: #fff; box-shadow: 0 8px 20px rgba(11,95,255,.25); }
+.cb .btn-primary:hover{ background: var(--brand-dark); }
+.cb .btn-ghost{ border-color: var(--line); color: var(--ink); background: #fff; }
+.cb .btn-ghost:hover{ border-color: var(--brand); color: var(--brand); }
+.cb .nav .btn{ padding: 10px 18px; font-size: .92rem; }
+.cb .btn-row{ display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+.cb .hero{
+  padding: 96px 0 80px;
+  background:
+    radial-gradient(900px 400px at 85% -10%, rgba(20,184,166,.14), transparent 60%),
+    radial-gradient(700px 400px at 0% 0%, rgba(11,95,255,.10), transparent 60%);
+}
+.cb .hero-grid{ display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; }
+.cb .hero h1 em{ font-style: normal; color: var(--brand); }
+.cb .hero-card{
+  background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 28px; box-shadow: var(--shadow);
+}
+.cb .hero-card h3{ font-size: 1.05rem; margin-bottom: 18px; }
+.cb .funnel{ list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.cb .funnel li{
+  display: flex; gap: 14px; align-items: flex-start; padding: 14px; border-radius: 12px; background: var(--bg-alt);
+  color: var(--ink);
+}
+.cb .funnel .dot{
+  flex: 0 0 34px; height: 34px; border-radius: 9px; display: grid; place-items: center; color: #fff; font-weight: 700; font-size: .9rem;
+}
+.cb .funnel li:nth-child(1) .dot{ background: var(--brand); }
+.cb .funnel li:nth-child(2) .dot{ background: var(--accent); }
+.cb .funnel li:nth-child(3) .dot{ background: var(--warm); }
+.cb .funnel strong{ display: block; font-size: .98rem; }
+.cb .funnel small{ color: var(--muted); font-size: .86rem; line-height: 1.45; display: block; }
+.cb .trust{ margin-top: 30px; font-size: .9rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 8px 22px; }
+.cb .trust span::before{ content: "✓ "; color: var(--accent); font-weight: 700; }
+.cb .page-hero{ padding: 80px 0 56px; background: linear-gradient(180deg, var(--bg-alt), #fff); border-bottom: 1px solid var(--line); }
+.cb .breadcrumbs{ font-size: .85rem; color: var(--muted); margin-bottom: 18px; }
+.cb .breadcrumbs a{ color: var(--muted); }
+.cb .grid{ display: grid; gap: 24px; }
+.cb .grid-2{ grid-template-columns: repeat(2, 1fr); }
+.cb .grid-3{ grid-template-columns: repeat(3, 1fr); }
+.cb .grid-4{ grid-template-columns: repeat(4, 1fr); }
+.cb .card{
+  background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 30px;
+  transition: .2s; height: 100%;
+}
+.cb .card:hover{ box-shadow: var(--shadow); transform: translateY(-2px); }
+.cb .card .icon{
+  width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; font-size: 1.4rem;
+  background: rgba(11,95,255,.08); margin-bottom: 18px;
+}
+.cb .card ul{ padding-left: 18px; margin: 0 0 1em; }
+.cb .card .more{ font-weight: 600; }
+.cb .section.dark .card{ background: #13263a; border-color: #20364d; }
+.cb .section.dark .card h3{ color: #fff; }
+.cb .split{ display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.cb .checklist{ list-style: none; padding: 0; margin: 0 0 1em; }
+.cb .checklist li{ padding-left: 30px; position: relative; margin-bottom: 12px; }
+.cb .checklist li::before{
+  content: "✓"; position: absolute; left: 0; top: 1px; width: 20px; height: 20px; border-radius: 50%;
+  background: rgba(20,184,166,.15); color: var(--accent); font-size: .75rem; font-weight: 800; display: grid; place-items: center;
+}
+.cb .steps{ counter-reset: step; display: grid; gap: 20px; }
+.cb .step{ position: relative; padding: 24px 24px 24px 80px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); }
+.cb .step::before{
+  counter-increment: step; content: counter(step, decimal-leading-zero);
+  position: absolute; left: 24px; top: 22px; font-family: var(--display); font-weight: 800; font-size: 1.5rem; color: var(--brand);
+}
+.cb .step h3{ margin-bottom: .3em; }
+.cb .step p{ margin: 0; }
+.cb .stat{ text-align: center; padding: 26px; }
+.cb .stat b{ display: block; font-family: var(--display); font-size: 2.2rem; color: var(--brand); }
+.cb .stat span{ color: var(--muted); font-size: .95rem; }
+.cb .callout{
+  border-left: 4px solid var(--accent); background: var(--bg-alt); padding: 20px 24px; border-radius: 0 12px 12px 0; margin: 28px 0;
+}
+.cb .callout p:last-child{ margin: 0; }
+.cb .table-wrap{ overflow-x: auto; }
+.cb table{ width: 100%; border-collapse: collapse; font-size: .95rem; background: #fff; }
+.cb th,.cb td{ text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.cb th{ background: var(--bg-alt); font-family: var(--display); }
+.cb td{ color: var(--ink-soft); }
+.cb .faq details{ border: 1px solid var(--line); border-radius: 12px; padding: 18px 22px; margin-bottom: 12px; background: #fff; }
+.cb .faq summary{ font-weight: 600; cursor: pointer; list-style: none; position: relative; padding-right: 30px; }
+.cb .faq summary::-webkit-details-marker{ display: none; }
+.cb .faq summary::after{ content: "+"; position: absolute; right: 0; top: -2px; font-size: 1.4rem; color: var(--brand); }
+.cb .faq details[open] summary::after{ content: "–"; }
+.cb .faq details p{ margin: 12px 0 0; }
+.cb .article{ max-width: 760px; margin: 0 auto; }
+.cb .article h2{ margin-top: 1.8em; font-size: 1.8rem; }
+.cb .article h3{ margin-top: 1.4em; }
+.cb .article li{ margin-bottom: 8px; }
+.cb .toc{ background: var(--bg-alt); border-radius: var(--radius); padding: 22px 26px; margin: 28px 0; }
+.cb .toc ol{ margin: 8px 0 0; padding-left: 20px; }
+.cb .cta-band{
+  background: linear-gradient(120deg, var(--brand), #0a3fa8 60%, #0d1b2a);
+  color: #fff; border-radius: 24px; padding: 56px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px; align-items: center;
+}
+.cb .cta-band h2{ color: #fff; }
+.cb .cta-band p{ color: #dbe6ff; }
+.cb .cta-band .btn-primary{ background: #fff; color: var(--brand); box-shadow: none; }
+.cb .cta-band .btn-ghost{ background: transparent; color: #fff; border-color: rgba(255,255,255,.4); }
+.cb .form{ background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: 34px; box-shadow: var(--shadow); }
+.cb .form-row{ display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.cb .field{ margin-bottom: 16px; }
+.cb .field label{ display: block; font-weight: 600; font-size: .9rem; margin-bottom: 6px; }
+.cb .field input,.cb .field select,.cb .field textarea{
+  width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; font: inherit; font-size: .98rem; background: #fff; color: var(--ink);
+}
+.cb .field input:focus,.cb .field select:focus,.cb .field textarea:focus{ outline: 2px solid rgba(11,95,255,.3); border-color: var(--brand); }
+.cb .form small{ color: var(--muted); display: block; margin-top: 12px; }
+.cb .site-footer{ background: var(--ink); color: #9fb0c3; padding: 64px 0 32px; font-size: .94rem; }
+.cb .footer-grid{ display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 32px; }
+.cb .site-footer h4{ color: #fff; font-size: 1rem; }
+.cb .site-footer ul{ list-style: none; padding: 0; margin: 0; }
+.cb .site-footer li{ margin-bottom: 8px; }
+.cb .site-footer a{ color: #9fb0c3; }
+.cb .site-footer a:hover{ color: #fff; }
+.cb .site-footer .logo{ color: #fff; }
+.cb .site-footer p{ color: #9fb0c3; }
+.cb .footer-bottom{ border-top: 1px solid #20364d; margin-top: 40px; padding-top: 24px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+@media (max-width: 960px){.cb .hero-grid,.cb .split,.cb .cta-band{ grid-template-columns: 1fr; }
+.cb .grid-3,.cb .grid-4{ grid-template-columns: repeat(2, 1fr); }
+.cb .footer-grid{ grid-template-columns: 1fr 1fr; }
+.cb .cta-band{ padding: 40px 28px; }}
+@media (max-width: 760px){.cb{ font-size: 16px; }
+.cb .section{ padding: 64px 0; }
+.cb .hero{ padding: 64px 0 56px; }
+.cb .grid-2,.cb .grid-3,.cb .grid-4,.cb .form-row{ grid-template-columns: 1fr; }
+.cb .footer-grid{ grid-template-columns: 1fr; }
+.cb .nav-toggle{ display: block; }
+.cb .nav-links{
+    display: none; position: absolute; top: 72px; left: 0; right: 0; background: #fff; flex-direction: column;
+    padding: 20px; gap: 16px; border-bottom: 1px solid var(--line); box-shadow: var(--shadow);
+  }
+.cb .nav-links.open{ display: flex; }
+.cb .step{ padding: 64px 22px 22px; }
+.cb .step::before{ top: 20px; left: 22px; }}
+.cb .section.dark .step{ background: #13263a; border-color: #20364d; }
+.cb .section.dark .step h3{ color: #fff; }
+.cb .section.dark .step::before{ color: var(--accent); }
+</style>
+<div class="cb">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <nav class="container nav" aria-label="Main">
+    <a class="logo" href="/">Coach<span>Berk</span></a>
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">&#9776;</button>
+    <ul class="nav-links">
+      <li><a href="/google-ads-for-insurance-agencies">Google Ads</a></li><li><a href="/insurance-agency-seo">SEO</a></li><li><a href="/policyholder-reactivation-campaigns" aria-current="page">Reactivation</a></li><li><a href="/insurance-agency-seo-guide">Free Guide</a></li><li><a class="btn btn-primary" href="/appointment">Book a Strategy Call</a></li>
+    </ul>
+  </nav>
+</header>
+<main id="main">
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumbs"><a href="/">Home</a> / Reactivation Campaigns</div>
+    <span class="eyebrow">Reactivation campaigns</span>
+    <h1>Your next thousand quotes are already in your AMS</h1>
+    <p class="lead">Larger agencies sit on years of lapsed policies, unbound quotes and single-policy households. A reactivation campaign turns that data into booked conversations for your producers, without buying a single new lead.</p>
+    <div class="btn-row"><a class="btn btn-primary" href="/appointment">Size my reactivation opportunity</a></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="center"><span class="eyebrow">Who we reach</span><h2>Six segments hiding in every agency's book</h2></div>
+    <div class="grid grid-3" style="margin-top:36px">
+      <div class="card"><div class="icon">⏳</div><h3>Lapsed and cancelled policies</h3><p>Former clients who left over price or service. Rates and carrier options change, so many are open to another look.</p></div>
+      <div class="card"><div class="icon">📝</div><h3>Unbound quotes</h3><p>Prospects who quoted and went quiet. Reach them again around their renewal date.</p></div>
+      <div class="card"><div class="icon">📅</div><h3>X-date prospects</h3><p>Timed outreach 45 to 60 days before a prospect's current policy renews.</p></div>
+      <div class="card"><div class="icon">➕</div><h3>Mono-line households</h3><p>Auto-only or home-only clients. Bundling raises premium per household and improves retention.</p></div>
+      <div class="card"><div class="icon">🏢</div><h3>Personal-to-commercial</h3><p>Personal lines clients who own businesses and buy commercial cover elsewhere.</p></div>
+      <div class="card"><div class="icon">🎂</div><h3>Life-event triggers</h3><p>New drivers, new homes, retirements and new babies, each a natural moment for a coverage review.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark">
+  <div class="container split">
+    <div>
+      <span class="eyebrow">How it works</span>
+      <h2 style="color:#fff">A done-for-you reactivation engine</h2>
+      <p>We handle the data, copy, sending and routing. Your producers only get the conversations that are ready.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><h3>Export and clean</h3><p>We pull segments from Applied Epic, AMS360, HawkSoft, EZLynx or your CRM, remove duplicates and check consent and do-not-contact status.</p></div>
+      <div class="step"><h3>Write and sequence</h3><p>Personal, helpful messages for each segment, delivered by email and SMS, with optional ringless voicemail and call tasks.</p></div>
+      <div class="step"><h3>Route hot replies</h3><p>Replies and quote requests go straight to the right producer or office with context attached.</p></div>
+      <div class="step"><h3>Measure premium</h3><p>We track replies, quotes, bound policies and premium won back for each segment.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split">
+    <div>
+      <h2>Compliance comes first</h2>
+      <p>Insurance outreach is regulated, and a careless SMS blast can cost far more than it earns. Every campaign is built with:</p>
+      <ul class="checklist">
+        <li>TCPA-aware SMS consent checks and opt-out handling</li>
+        <li>CAN-SPAM compliant email with clear unsubscribe options</li>
+        <li>Respect for state rules and carrier marketing guidelines</li>
+        <li>Your licensed team approving all messaging</li>
+      </ul>
+      <p style="font-size:.9rem;color:var(--muted)">CoachBerk is not a law firm. We recommend your agency's counsel review your outreach program.</p>
+    </div>
+    <div class="card">
+      <h3>Example email: lapsed home policy</h3>
+      <p style="font-style:italic">"Hi Sarah, it's been a while since we helped with your home insurance. Rates in [Town] have moved a lot this year, and we now work with a few carriers we didn't have before. Would you like a no-pressure comparison before your renewal? Just reply 'yes' and Mike from our office will put it together."</p>
+      <p style="font-size:.9rem;color:var(--muted)">Short, personal and useful, sent from a real person at your agency.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section alt">
+  <div class="container">
+    <div class="cta-band">
+      <div><h2>How much premium is sitting in your database?</h2><p>Tell us roughly how many records you have and we'll estimate the size of your reactivation opportunity.</p></div>
+      <div class="btn-row" style="margin:0"><a class="btn btn-primary" href="/appointment">Get my estimate</a></div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="logo" href="/">Coach<span>Berk</span></a>
+        <p style="margin-top:14px">Growth marketing built only for insurance agencies: Google Ads, SEO and reactivation campaigns that turn searches and old files into written policies.</p>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/google-ads-for-insurance-agencies">Google Ads for Agencies</a></li>
+          <li><a href="/insurance-agency-seo">Insurance Agency SEO</a></li>
+          <li><a href="/policyholder-reactivation-campaigns">Reactivation Campaigns</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/insurance-agency-seo-guide">Insurance Agency SEO Guide</a></li>
+          <li><a href="/google-ads-and-seo-checklist">Google Ads &amp; SEO Checklist</a></li>
+          <li><a href="/private-policy">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:berk@coachberk.com">berk@coachberk.com</a></li>
+          <li><a href="/appointment">Book a strategy call</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year">2026</span> CoachBerk. All rights reserved.</span>
+      <span>Built for independent &amp; multi-location insurance agencies.</span>
+    </div>
+  </div>
+</footer>
+</div>
+<script>
+// Mobile nav toggle + footer year
+(function () {
+  var toggle = document.querySelector('.nav-toggle');
+  var links = document.querySelector('.nav-links');
+  if (toggle && links) {
+    toggle.addEventListener('click', function () {
+      var open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+  var year = document.getElementById('year');
+  if (year) year.textContent = new Date().getFullYear();
+})();
+</script>
