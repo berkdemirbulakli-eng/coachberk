@@ -282,6 +282,7 @@ def main():
                   f"- **Header tracking code:** `ghl/{slug}-header-code.html`", ""]
     (GHL_OUT / "SEO-SETTINGS.md").write_text("\n".join(lines))
     build_ads_lead_page()
+    build_shared_pieces_and_plan(css)
 
 
 def minify_css(css):
@@ -310,6 +311,75 @@ def build_ads_lead_page():
             '<style>body{margin:0;background:#fff}</style>\n</head>\n<body>\n'
             + top + form + bottom + "</body>\n</html>\n")
     (ROOT / "agency-growth-plan.html").write_text(fill(page, STATIC_PATHS))
+
+
+
+LINK_FIX_JS = """(function () {
+var toggle = document.querySelector('.cb .nav-toggle');
+var links = document.querySelector('.cb .nav-links');
+if (toggle && links) {
+toggle.addEventListener('click', function () {
+var open = links.classList.toggle('open');
+toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+}
+document.querySelectorAll('.cb a[href^="/"]').forEach(function (a) {
+a.href = '""" + SITE + """' + a.getAttribute('href');
+});
+document.querySelectorAll('.cb a[href^="#"]').forEach(function (a) {
+a.addEventListener('click', function (e) {
+var t = document.getElementById(a.getAttribute('href').slice(1));
+if (!t) return;
+e.preventDefault();
+t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+});
+})();"""
+
+
+def build_shared_pieces_and_plan(css):
+    """The 3-box GHL pattern: Piece 1 (styles + menu) and Piece 3 (footer) are the same on
+    every page; Piece 2 is the page content. Also builds the 90-Day Growth Plan page + PDF source."""
+    piece1 = (f"<!-- CoachBerk: PIECE 1 (styles + menu). Same on every page. -->\n{FONTS}\n"
+              f"<style>\n{css}\n</style>\n<div class=\"cb\">\n{header(None)}\n</div>\n")
+    piece3 = (f"<!-- CoachBerk: PIECE 3 (footer + link fix). Same on every page. -->\n"
+              f"<div class=\"cb\">\n{FOOTER}\n</div>\n<script>\n{LINK_FIX_JS}\n</script>\n")
+    (GHL_OUT / "piece-1-styles-menu.html").write_text(minify_html(fill(piece1, GHL_PATHS)))
+    (GHL_OUT / "piece-3-footer.html").write_text(minify_html(fill(piece3, GHL_PATHS)))
+
+    plan = (ROOT / "src" / "plan" / "90-day-growth-plan.html").read_text()
+    (GHL_OUT / "plan-2-content.html").write_text(minify_html(
+        "<!-- CoachBerk: 90-Day Growth Plan page, PIECE 2 (content) -->\n<div class=\"cb\">\n" + plan + "\n</div>\n"))
+
+    # Printable version for the PDF: absolute links, no menu, page-break friendly.
+    printable = plan.replace('href="/', 'href="' + SITE + '/')
+    out = ROOT / "deliverables"
+    out.mkdir(exist_ok=True)
+    (out / "90-day-growth-plan-print.html").write_text(f"""<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<title>The 90-Day Agency Growth Plan | CoachBerk</title>
+{FONTS}
+<style>
+{css}
+@page {{ size: Letter; margin: 0.5in 0; }}
+body {{ margin: 0; background: #fff; }}
+.cb .section, .cb .page-hero {{ padding: 36px 0; }}
+.cb .card, .cb .step, .cb tr, .cb .callout, .cb .cta-band {{ break-inside: avoid; }}
+.cb .card:hover {{ transform: none; box-shadow: none; }}
+.cb .split {{ grid-template-columns: 1fr; gap: 18px; }}
+.cb h2, .cb h3, .cb .eyebrow {{ break-after: avoid; }}
+.cb .eyebrow {{ display: block; }}
+.cb .card {{ height: auto; }}
+.cb .section {{ break-inside: auto; }}
+.cb .steps {{ grid-template-columns: 1fr 1fr; gap: 14px; }}
+.cb .step {{ padding: 54px 20px 18px; }} .cb .step::before {{ top: 16px; left: 20px; }}
+.cb .brandbar {{ display: flex; justify-content: space-between; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--line); }}
+</style></head>
+<body><div class="cb">
+<div class="container brandbar"><span class="logo">Coach<span>Berk</span></span><span style="color:var(--muted);font-size:.9rem">www.coachberk.com &middot; {EMAIL}</span></div>
+{printable}
+</div></body></html>
+""")
 
 
 if __name__ == "__main__":

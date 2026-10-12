@@ -1,0 +1,63 @@
+<!-- CoachBerk: PIECE 3 (footer + link fix). Same on every page. -->
+<div class="cb">
+<footer class="site-footer">
+<div class="container">
+<div class="footer-grid">
+<div>
+<a class="logo" href="/">Coach<span>Berk</span></a>
+<p style="margin-top:14px">Growth marketing built only for insurance agencies: Google Ads, SEO and reactivation campaigns that turn searches and old files into written policies.</p>
+</div>
+<div>
+<h4>Services</h4>
+<ul>
+<li><a href="/google-ads-for-insurance-agencies">Google Ads for Agencies</a></li>
+<li><a href="/insurance-agency-seo">Insurance Agency SEO</a></li>
+<li><a href="/policyholder-reactivation-campaigns">Reactivation Campaigns</a></li>
+</ul>
+</div>
+<div>
+<h4>Resources</h4>
+<ul>
+<li><a href="/insurance-agency-seo-guide">Insurance Agency SEO Guide</a></li>
+<li><a href="/google-ads-and-seo-checklist">Google Ads &amp; SEO Checklist</a></li>
+<li><a href="/private-policy">Privacy Policy</a></li>
+</ul>
+</div>
+<div>
+<h4>Contact</h4>
+<ul>
+<li><a href="mailto:berk@coachberk.com">berk@coachberk.com</a></li>
+<li><a href="/agency-growth-plan">Get your free growth plan</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<span>&copy; <span id="year">2026</span> CoachBerk. All rights reserved.</span>
+<span>Built for independent &amp; multi-location insurance agencies.</span>
+</div>
+</div>
+</footer>
+</div>
+<script>
+(function () {
+var toggle = document.querySelector('.cb .nav-toggle');
+var links = document.querySelector('.cb .nav-links');
+if (toggle && links) {
+toggle.addEventListener('click', function () {
+var open = links.classList.toggle('open');
+toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
+}
+document.querySelectorAll('.cb a[href^="/"]').forEach(function (a) {
+a.href = 'https://www.coachberk.com' + a.getAttribute('href');
+});
+document.querySelectorAll('.cb a[href^="#"]').forEach(function (a) {
+a.addEventListener('click', function (e) {
+var t = document.getElementById(a.getAttribute('href').slice(1));
+if (!t) return;
+e.preventDefault();
+t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+});
+})();
+</script>

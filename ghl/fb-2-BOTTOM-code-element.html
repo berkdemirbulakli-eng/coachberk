@@ -19,8 +19,6 @@
 <li><strong>Month-to-month.</strong> We keep your business by producing results, not by locking you into a contract.</li>
 <li><strong>Real numbers.</strong> We report on quotes, policies and premium, not clicks and impressions.</li>
 </ul>
-<!-- Add a real client testimonial or result here, then delete this box. -->
-<div class="slot">Spot for a real client testimonial or result. Add yours here.</div>
 </div>
 </section>
 <section class="band">
@@ -39,3 +37,12 @@
 </div>
 </footer>
 </div>
+<script>
+document.addEventListener('click', function (e) {
+var link = e.target.closest && e.target.closest('a[href="#get-plan"]');
+if (!link) return;
+e.preventDefault();
+var target = document.getElementById('get-plan') || document.querySelector('form');
+if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+</script>
