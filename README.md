@@ -1,7 +1,7 @@
 # coachberk.com
 
 Static marketing site for CoachBerk: Google Ads, SEO and reactivation campaigns for larger insurance agencies.
-The live site runs on a **GoHighLevel** funnel. See [`ghl/GHL-SETUP.md`](ghl/GHL-SETUP.md) for how to paste the pages in,
+The live site runs on a **GoHighLevel** funnel. See [`ghl/START-HERE.md`](ghl/START-HERE.md) for how to paste the pages in,
 and [`ghl/SEO-SETTINGS.md`](ghl/SEO-SETTINGS.md) for each page's title, description and path.
 
 ## Editing
@@ -22,10 +22,10 @@ GHL page paths (including the Appointment page) are set in `GHL_PATHS` at the to
 | `/insurance-agency-seo` | insurance agency SEO, local SEO |
 | `/policyholder-reactivation-campaigns` | insurance reactivation / win-back campaigns |
 | `/insurance-agency-seo-guide` | how to get insurance leads from SEO (long-form guide) |
-| `/appointment` (existing) | booking: every call-to-action button goes here |
+| `/agency-growth-plan` | lead page with the GHL form (for site buttons and Facebook/Google ads), redirects to `/appointment` |
 
 Every page has a unique title and meta description, a canonical URL, Open Graph tags and JSON-LD schema
 (Organization, Service, FAQPage, Article, BreadcrumbList). `sitemap.xml` and `robots.txt` are included.
 
 ## Before launch
-Follow the checklist in [`ghl/GHL-SETUP.md`](ghl/GHL-SETUP.md). It covers paths, SEO settings, sitemap, robots.txt, Search Console and testing.
+Follow the checklist in [`ghl/START-HERE.md`](ghl/START-HERE.md). It covers paths, SEO settings, sitemap, robots.txt, Search Console and testing.

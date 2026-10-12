@@ -1,0 +1,15 @@
+<div class="fb" style="background:#f4f7fb;padding:8px 0 56px">
+<div class="wrap" style="max-width:560px">
+<form id="demo-form" style="background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:28px;box-shadow:0 10px 30px rgba(13,27,42,.08);display:grid;gap:14px">
+<p style="margin:0;font-size:.8rem;color:#6b7a8c;text-transform:uppercase;letter-spacing:.1em;font-weight:700">Your GHL form goes here</p>
+<label style="font-weight:600;font-size:.9rem">Full name<input id="f-name" required style="display:block;width:100%;margin-top:6px;padding:12px;border:1px solid #e2e8f0;border-radius:10px;font:inherit"></label>
+<label style="font-weight:600;font-size:.9rem">Email<input id="f-email" type="email" required style="display:block;width:100%;margin-top:6px;padding:12px;border:1px solid #e2e8f0;border-radius:10px;font:inherit"></label>
+<label style="font-weight:600;font-size:.9rem">Phone<input id="f-phone" type="tel" style="display:block;width:100%;margin-top:6px;padding:12px;border:1px solid #e2e8f0;border-radius:10px;font:inherit"></label>
+<label style="font-weight:600;font-size:.9rem">Agency name<input id="f-agency" style="display:block;width:100%;margin-top:6px;padding:12px;border:1px solid #e2e8f0;border-radius:10px;font:inherit"></label>
+<label style="font-weight:600;font-size:.9rem">Number of locations<select id="f-loc" style="display:block;width:100%;margin-top:6px;padding:12px;border:1px solid #e2e8f0;border-radius:10px;font:inherit;background:#fff"><option>1</option><option>2 to 4</option><option>5 to 10</option><option>11 or more</option></select></label>
+<button class="btn" type="submit" style="border:0;cursor:pointer;width:100%">Send Me My Plan</button>
+<p id="f-msg" style="margin:0;font-size:.9rem;color:#6b7a8c;text-align:center">On your live page, this sends the lead to GHL and opens your Appointment page.</p>
+</form>
+</div>
+</div>
+<script>document.getElementById('demo-form').addEventListener('submit',function(e){e.preventDefault();document.getElementById('f-msg').textContent='Preview only: on your live page this lead goes into GHL Contacts, then the visitor books on your Appointment page.';});</script>
