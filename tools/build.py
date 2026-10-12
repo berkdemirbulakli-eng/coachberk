@@ -278,6 +278,20 @@ def main():
                   "- **Social image:** a 1200×630 image with your logo and the page headline",
                   f"- **Header tracking code:** `ghl/{slug}-header-code.html`", ""]
     (GHL_OUT / "SEO-SETTINGS.md").write_text("\n".join(lines))
+    build_ads_lead_page()
+
+
+def minify_html(text):
+    """Drop indentation and blank lines so the paste stays small."""
+    return "\n".join(line.strip() for line in text.splitlines() if line.strip()) + "\n"
+
+
+def build_ads_lead_page():
+    """Facebook / Google Ads lead page: two Code blocks with a GHL Form element between them."""
+    src = ROOT / "src" / "fb"
+    for name, out in (("agency-growth-plan-top.html", "fb-1-TOP-code-element.html"),
+                      ("agency-growth-plan-bottom.html", "fb-2-BOTTOM-code-element.html")):
+        (GHL_OUT / out).write_text(minify_html(fill((src / name).read_text(), GHL_PATHS)))
 
 
 if __name__ == "__main__":
