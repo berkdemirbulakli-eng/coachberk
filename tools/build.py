@@ -352,7 +352,11 @@ def build_shared_pieces_and_plan(css):
         "<!-- CoachBerk: 90-Day Growth Plan page, PIECE 2 (content) -->\n<div class=\"cb\">\n" + plan + "\n</div>\n"))
 
     # Printable version for the PDF: absolute links, no menu, page-break friendly.
-    printable = plan.replace('href="/', 'href="' + SITE + '/')
+    # Paper can't be clicked: drop the interactive parts and leave a blank Yes / No column.
+    printable = re.sub(r"<!--i-->.*?<!--/i-->", "", plan, flags=re.S)
+    printable = re.sub(r'<span class="yn".*?</span>', "&nbsp;", printable)
+    printable = printable.replace("<th>Your answer</th>", "<th>Yes / No</th>").replace("Tap Yes or No", "Answer yes or no")
+    printable = printable.replace('href="/', 'href="' + SITE + '/')
     out = ROOT / "deliverables"
     out.mkdir(exist_ok=True)
     (out / "90-day-growth-plan-print.html").write_text(f"""<!doctype html>

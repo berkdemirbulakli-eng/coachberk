@@ -1,3 +1,19 @@
+<!--i-->
+<style>
+.cb .yn{display:inline-flex;gap:6px}
+.cb .yn button{font:inherit;font-size:.9rem;font-weight:600;padding:7px 14px;border-radius:8px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;min-width:52px}
+.cb .yn button:hover{border-color:var(--brand)}
+.cb .yn button:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.cb .yn button.on[data-v="y"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.cb .yn button.on[data-v="n"]{background:var(--warm);border-color:var(--warm);color:#fff}
+.cb .score{margin-top:24px;padding:22px 24px;border-radius:14px;background:var(--bg-alt);border:1px solid var(--line)}
+.cb .score-msg{margin:0;font-size:1.05rem;color:var(--ink)}
+.cb .score-msg strong{font-family:var(--display);font-size:1.25rem}
+.cb #cb-score-cta{margin-top:16px}
+.cb [hidden]{display:none!important}
+@media (max-width:760px){.cb .yn{flex-direction:column}}
+</style>
+<!--/i-->
 <section class="page-hero">
   <div class="container" style="max-width:900px">
     <span class="eyebrow">Your free plan from CoachBerk</span>
@@ -11,24 +27,30 @@
   <div class="container" style="max-width:900px">
     <span class="eyebrow">Start here</span>
     <h2>Where does your agency stand today?</h2>
-    <p>Answer yes or no to each question. Every "no" is a gap this plan helps you close.</p>
+    <p>Tap Yes or No for each question. Every "No" is a gap this plan helps you close.</p>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>#</th><th>Question</th><th>Yes / No</th></tr></thead>
+        <thead><tr><th>#</th><th>Question</th><th>Your answer</th></tr></thead>
         <tbody>
-          <tr><td>1</td><td>Does every office have its own verified Google Business Profile?</td><td>&nbsp;</td></tr>
-          <tr><td>2</td><td>Does each office show up in the Google Maps top 3 for "insurance agency near me" in its own town?</td><td>&nbsp;</td></tr>
-          <tr><td>3</td><td>Do you ask every new client for a Google review, every time?</td><td>&nbsp;</td></tr>
-          <tr><td>4</td><td>Does your website have a separate page for each office and each main line you write?</td><td>&nbsp;</td></tr>
-          <tr><td>5</td><td>Do you know how many quote requests your website brought in last month?</td><td>&nbsp;</td></tr>
-          <tr><td>6</td><td>Are phone calls from your website and ads tracked back to where they came from?</td><td>&nbsp;</td></tr>
-          <tr><td>7</td><td>If you run Google Ads, do you know your cost per quote, not just cost per click?</td><td>&nbsp;</td></tr>
-          <tr><td>8</td><td>Do unbound quotes get follow-up after the first 30 days?</td><td>&nbsp;</td></tr>
-          <tr><td>9</td><td>Do lapsed clients hear from you before their next renewal date?</td><td>&nbsp;</td></tr>
-          <tr><td>10</td><td>Do you know how many of your households have only one policy with you?</td><td>&nbsp;</td></tr>
+          <tr><td>1</td><td>Does every office have its own verified Google Business Profile?</td><td><span class="yn" data-q="1"><button type="button" data-v="y">Yes</button><button type="button" data-v="n">No</button></span></td></tr>
+          <tr><td>2</td><td>Does each office show up in the Google Maps top 3 for "insurance agency near me" in its own town?</td><td><span class="yn" data-q="2"><button type="button" data-v="y">Yes</button><button type="button" data-v="n">No</button></span></td></tr>
+          <tr><td>3</td><td>Do you ask every new client for a Google review, every time?</td><td><span class="yn" data-q="3"><button type="button" data-v="y">Yes</button><button type="button" data-v="n">No</button></span></td></tr>
+          <tr><td>4</td><td>Does your website have a separate page for each office and each main line you write?</td><td><span class="yn" data-q="4"><button type="button" data-v="y">Yes</button><button type="button" data-v="n">No</button></span></td></tr>
+          <tr><td>5</td><td>Do you know how many quote requests your website brought in last month?</td><td><span class="yn" data-q="5"><button type="button" data-v="y">Yes</button><button type="button" data-v="n">No</button></span></td></tr>
+          <tr><td>6</td><td>Are phone calls from your website and ads tracked back to where they came from?</td><td><span class="yn" data-q="6"><button type="button" data-v="y">Yes</button><button type="button" data-v="n">No</button></span></td></tr>
+          <tr><td>7</td><td>If you run Google Ads, do you know your cost per quote, not just cost per click?</td><td><span class="yn" data-q="7"><button type="button" data-v="y">Yes</button><button type="button" data-v="n">No</button></span></td></tr>
+          <tr><td>8</td><td>Do unbound quotes get follow-up after the first 30 days?</td><td><span class="yn" data-q="8"><button type="button" data-v="y">Yes</button><button type="button" data-v="n">No</button></span></td></tr>
+          <tr><td>9</td><td>Do lapsed clients hear from you before their next renewal date?</td><td><span class="yn" data-q="9"><button type="button" data-v="y">Yes</button><button type="button" data-v="n">No</button></span></td></tr>
+          <tr><td>10</td><td>Do you know how many of your households have only one policy with you?</td><td><span class="yn" data-q="10"><button type="button" data-v="y">Yes</button><button type="button" data-v="n">No</button></span></td></tr>
         </tbody>
       </table>
     </div>
+    <!--i-->
+    <div class="score" id="cb-score" aria-live="polite">
+      <p class="score-msg" id="cb-score-msg">Answer all 10 questions to see your score.</p>
+      <div id="cb-score-cta" hidden><a class="btn btn-primary" href="/appointment">Book my personal plan review</a></div>
+    </div>
+    <!--/i-->
   </div>
 </section>
 
@@ -127,3 +149,33 @@
     </div>
   </div>
 </section>
+
+<!--i-->
+<script>
+(function () {
+  var answers = {};
+  var msg = document.getElementById('cb-score-msg');
+  var cta = document.getElementById('cb-score-cta');
+  function update() {
+    var keys = Object.keys(answers), total = 10, done = keys.length;
+    if (!done) { msg.textContent = 'Answer all 10 questions to see your score.'; cta.hidden = true; return; }
+    if (done < total) { msg.textContent = "You've answered " + done + ' of ' + total + '.'; cta.hidden = true; return; }
+    var no = keys.filter(function (k) { return answers[k] === 'n'; }).length;
+    var level = no <= 2 ? 'You have a strong foundation. The plan below will help you build on it.'
+      : no <= 5 ? 'You have some clear gaps. Closing them is where your next policies will come from.'
+      : 'You have big room to grow. Start with Phase 1 below.';
+    msg.innerHTML = '<strong>You answered No to ' + no + ' of ' + total + '.</strong><br>Each No is a growth gap this plan helps you close. ' + level;
+    cta.hidden = false;
+  }
+  document.querySelectorAll('.cb .yn').forEach(function (group) {
+    group.addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (!b) return;
+      group.querySelectorAll('button').forEach(function (x) { x.classList.remove('on'); x.setAttribute('aria-pressed', 'false'); });
+      b.classList.add('on'); b.setAttribute('aria-pressed', 'true');
+      answers[group.getAttribute('data-q')] = b.getAttribute('data-v');
+      update();
+    });
+  });
+})();
+</script>
+<!--/i-->
