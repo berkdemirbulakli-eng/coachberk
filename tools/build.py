@@ -27,7 +27,8 @@ GHL_PATHS = {
     "REACT": "/policyholder-reactivation-campaigns",
     "GUIDE": "/insurance-agency-seo-guide",
     "PLAN": "/agency-growth-plan",
-    "BOOK": "/appointment",
+    "BOOK": "/appointment-page",
+    "PLANSENT": "/plan-on-the-way",
     "CHECKLIST": "/google-ads-and-seo-checklist",
     "PRIVACY": "/private-policy",
 }
@@ -350,6 +351,7 @@ def build_shared_pieces_and_plan(css):
     (GHL_OUT / "piece-1-styles-menu.html").write_text(minify_html(fill(piece1, GHL_PATHS)))
     (GHL_OUT / "piece-3-footer.html").write_text(minify_html(fill(piece3, GHL_PATHS)))
 
+    (GHL_OUT / "plan-on-the-way.html").write_text(minify_html((ROOT / "src" / "plan" / "plan-on-the-way.html").read_text()))
     plan = (ROOT / "src" / "plan" / "90-day-growth-plan.html").read_text()
     (GHL_OUT / "plan-2-content.html").write_text(minify_html(
         "<!-- CoachBerk: 90-Day Growth Plan page, PIECE 2 (content) -->\n<div class=\"cb\">\n" + plan + "\n</div>\n"))

@@ -1,0 +1,21 @@
+USE FOR: Branch 1 (premium is $5M-$10M or $10M+)
+
+SUBJECT:
+Your 90-Day Agency Growth Plan (+ your review link)
+
+BODY:
+Hi {{contact.first_name}},
+
+Thanks for requesting your free Agency Growth Plan. Here's your copy:
+https://www.coachberk.com/90-day-growth-plan
+
+Start with the 10-question check at the top. It takes two minutes and shows you where your biggest gaps are.
+
+Because your agency is writing $5M+ in premium, you also qualify for a free personal plan review with me. Pick a time here:
+https://www.coachberk.com/appointment-page
+
+On the call I'll show you how your offices look on Google, where your ad money is going (if you run ads) and what's sitting in your database, and we'll agree your top 3 moves for the next 90 days.
+
+Talk soon,
+Berk
+CoachBerk | berk@coachberk.com

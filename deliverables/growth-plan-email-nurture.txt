@@ -1,0 +1,18 @@
+USE FOR: Branch 2 (everyone else)
+
+SUBJECT:
+Your 90-Day Agency Growth Plan is here
+
+BODY:
+Hi {{contact.first_name}},
+
+Thanks for requesting your free Agency Growth Plan. Here's your copy:
+https://www.coachberk.com/90-day-growth-plan
+
+Start with the 10-question check at the top. It takes two minutes and shows you where your biggest gaps are. Then work through Phase 1. Those fixes make everything after them work better.
+
+If you have a question as you go, just reply to this email.
+
+Talk soon,
+Berk
+CoachBerk | berk@coachberk.com
