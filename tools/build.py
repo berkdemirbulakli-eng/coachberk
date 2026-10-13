@@ -301,6 +301,9 @@ def build_ads_lead_page():
     bottom = (src / "agency-growth-plan-bottom.html").read_text()
     (GHL_OUT / "fb-1-TOP-code-element.html").write_text(minify_html(fill(top, GHL_PATHS)))
     (GHL_OUT / "fb-2-BOTTOM-code-element.html").write_text(minify_html(fill(bottom, GHL_PATHS)))
+    # Short Facebook page: form at the top (Block 1 left of the GHL form), short sales copy below.
+    for name, out in (("fb-growth-plan-top.html", "fbshort-1-TOP.html"), ("fb-growth-plan-bottom.html", "fbshort-2-BOTTOM.html")):
+        (GHL_OUT / out).write_text(minify_html(fill((src / name).read_text(), GHL_PATHS)))
     # Static copy, with a stand-in where the GHL form goes.
     form = (src / "form-preview.html").read_text()
     page = ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'

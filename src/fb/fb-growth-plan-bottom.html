@@ -1,0 +1,51 @@
+<!-- CoachBerk short Facebook page: BLOCK 2 of 2 (BELOW the form). Uses the styles from Block 1. -->
+<div class="fbs">
+  <section class="band">
+    <div class="wrap">
+      <h2>What's inside your plan</h2>
+      <ul class="inside">
+        <li><b>1</b><span>A 10-question check that shows your agency's biggest growth gaps</span></li>
+        <li><b>2</b><span>Days 1–14: the tracking and Google profile fixes to make first</span></li>
+        <li><b>3</b><span>Days 15–45: quick wins from Google Ads and your old quotes</span></li>
+        <li><b>4</b><span>Days 46–90: how to scale what's working, plus a monthly scorecard</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band alt">
+    <div class="wrap">
+      <h2>Why agency owners use CoachBerk</h2>
+      <ul class="why">
+        <li><strong>Insurance only.</strong> We already speak X-dates, carrier appetite and retention.</li>
+        <li><strong>Month-to-month.</strong> We keep your business by producing results, not contracts.</li>
+        <li><strong>Real numbers.</strong> We report on quotes, policies and premium, not clicks.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Quick questions</h2>
+      <details><summary>Is the plan really free?</summary><p>Yes. No cost and no obligation. It's yours to keep whether or not we work together.</p></details>
+      <details><summary>Who is it for?</summary><p>Insurance agency owners who want to grow, especially agencies with a few producers or more than one office.</p></details>
+      <div class="center" style="margin-top:28px"><a class="btn" href="#top">Get My Free Growth Plan</a></div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="wrap">
+      <p>&copy; 2026 CoachBerk &middot; <a href="{{PRIVACY}}">Privacy Policy</a> &middot; berk@coachberk.com</p>
+      <p>This site is not part of Facebook or Meta Platforms, Inc., and is not endorsed by Meta.</p>
+    </div>
+  </footer>
+</div>
+<script>
+document.addEventListener('click', function (e) {
+  var link = e.target.closest && e.target.closest('.fbs a[href="#top"]');
+  if (!link) return;
+  e.preventDefault();
+  var target = document.querySelector('form') || document.querySelector('.fbs.top');
+  if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  else window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+</script>
